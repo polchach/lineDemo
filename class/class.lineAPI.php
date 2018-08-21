@@ -81,8 +81,8 @@ class lineAPI {
 		$result = curl_exec($ch);
 		curl_close ($ch);
 	}
-	function pushToDB($arrPostData){
-		$strUrl = "http://www.thailandsmartai.com/GW/push.json/?data=".base64_encode(json_encode($arrPostData));
+	function keepToDB($arrPostData){
+		$strUrl = "http://www.thailandsmartai.com/GW/push/index.php?data=".base64_encode(json_encode($arrPostData));
 		$ch = curl_init();
 		curl_setopt($ch, CURLOPT_URL,$strUrl);
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
@@ -92,7 +92,7 @@ class lineAPI {
 
 	}
 	function checkAuth($arrPostData){
-		$strUrl = "http://www.thailandsmartai.com/GW/oauth.json/?data=".base64_encode(json_encode($arrPostData));
+		$strUrl = "http://www.thailandsmartai.com/GW/auth/index.php?data=".base64_encode(json_encode($arrPostData));
 		$ch = curl_init();
 		curl_setopt($ch, CURLOPT_URL,$strUrl);
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
@@ -100,39 +100,6 @@ class lineAPI {
 		$result = curl_exec($ch);
 		curl_close ($ch);
 		return json_decode($result,true);
-
-	}
-	
-	function AgentToTalk($arrPostData){
-		$strUrl = "http://www.thailandsmartai.com/GW/state.json/?data=".base64_encode(json_encode($arrPostData));
-		$ch = curl_init();
-		curl_setopt($ch, CURLOPT_URL,$strUrl);
-		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-		$result = curl_exec($ch);
-		curl_close ($ch);
-		return json_decode($result,true);
-
-	}
-	function getAgentState($arrPostData){
-		$strUrl = "http://www.thailandsmartai.com/GW/state.json/?data=".base64_encode(json_encode($arrPostData));
-		$ch = curl_init();
-		curl_setopt($ch, CURLOPT_URL,$strUrl);
-		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-		$result = curl_exec($ch);
-		curl_close ($ch);
-		return json_decode($result,true);
-
-	}
-	function updateAgentState($arrPostData){
-		$strUrl = "http://www.thailandsmartai.com/GW/push.json/?data=".base64_encode(json_encode($arrPostData));
-		$ch = curl_init();
-		curl_setopt($ch, CURLOPT_URL,$strUrl);
-		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-		curl_exec($ch);
-		curl_close ($ch);
 
 	}
 	
@@ -179,7 +146,7 @@ class lineAPI {
 		$arrPostData = array(
 				"users" => $users
 			);
-		$this->pushToDB($arrPostData);
+		$this->keepToDB($arrPostData);
 		
 		return $users;
 	}
@@ -238,7 +205,7 @@ class lineAPI {
 		$arrPostData = array(
 				"agents" => $users
 			);
-		$this->pushToDB($arrPostData);
+		$this->keepToDB($arrPostData);
 		
 		return $arrPostData['agents']['displayName'];
 	}
