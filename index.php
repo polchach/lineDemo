@@ -33,6 +33,14 @@ if(sizeof($array_message)==5){
 			}
 		
 		}
+		$arrTo[] = 	"U3ff18f16e94a80b192dd89eaaa8b7846";
+			$arrTo[] = 	"Uef43a26cff64ac0a608c9acf9d0f70cd";
+			$arrTo[] = 	"R4f8f29841c882322654fceb16459e06e";
+			$arrTo[] = 	"Rcb9eca4ffaa7798fde9eed394f9a3321";			
+			$arrPushData = array("to"=>"U3ff18f16e94a80b192dd89eaaa8b7846","messages"=>$messages);
+			//$line->Multicast_Message($arrPushData);
+			$line->Push_Message($arrPushData);
+			$line->Reply_Message($arrPostData);
 	}
 }
 else{
