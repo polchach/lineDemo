@@ -185,7 +185,7 @@ else{
 		}
 		else{
 			//ค้นหา agent ที่มี skill และพร้อม สนทนากับ ลูกค้า
-			$results = $line->getAgentState($arrPostData);
+			/*$results = $line->getAgentState($arrPostData);
 			
 			switch($arrJson['events'][0]['message']['type']){
 				case 'text':
@@ -297,22 +297,10 @@ else{
 				break;
 			}
 			
-			//$line->AgentToTalk($messages);  
+			//$line->AgentToTalk($messages);  */
 		}
 	}
 
 }
 
- /*		$messages[] = array(
-									"type"	=> "text",
-									"text"	=> "UserId: " .$arrJson['events'][0]['source']['userId']
-								);
-				$messages[] = array(
-									"type"	=> "text",
-									"text"	=> "GroupId: " .$arrJson['events'][0]['source']['groupId']
-								);
-				$messages[] = array(
-									"type"	=> "text",
-									"text"	=> "RoomId: " .$arrJson['events'][0]['source']['roomId']
-								);*/
 ?>
