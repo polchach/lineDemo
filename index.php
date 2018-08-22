@@ -1,5 +1,6 @@
 <?php
 date_default_timezone_set("Asia/Bangkok");
+
 require_once('class/class.lineAPI.php');
 $line = new lineAPI();
 
